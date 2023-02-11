@@ -1,7 +1,40 @@
 import { Add } from "@mui/icons-material";
 import { Box, Card, CardActions, CardContent, Fab, TextField } from "@mui/material";
+import { useState } from "react";
 
-export default function NewNoteForm() {
+export default function NewNoteForm(props) {
+
+  /**
+   * Hook to save current state note
+   */
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+  }) 
+
+  /**
+   * Save note on app component state through props 
+   */
+  function submitNote(event) {
+    props.onAdd(note)
+    setNote({
+      title: '',
+      content: ''
+    });
+    event.preventDefault();
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setNote(prevNote => {
+      return {
+        ...prevNote, 
+        [name]: value
+      }
+    });
+  }
+
   return (
     <Box sx={{
       display: 'flex',
@@ -21,6 +54,8 @@ export default function NewNoteForm() {
                 label="Crear una nota"
                 name="title"
                 variant="filled"
+                onChange={handleChange}
+                value={note.title}
               />
 
               <TextField 
@@ -30,13 +65,15 @@ export default function NewNoteForm() {
                 variant="filled"
                 multiline
                 rows={3}
+                onChange={handleChange}
+                value={note.content}
               />
             </Box>
           </form>
         </CardContent>
         <CardActions sx={{ display:'flex', justifyContent:'flex-end' }}>
           <Fab size="small">
-            <Add />
+            <Add onClick={submitNote} />
           </Fab>
         </CardActions>
       </Card>
