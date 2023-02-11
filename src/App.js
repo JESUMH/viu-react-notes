@@ -22,6 +22,18 @@ function App() {
       return [...prevNotes, newNote]
     })
   }
+
+  /**
+   * Remove Note
+   */
+
+  function removeNote(id) {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((notes, index) => {
+        return id !== index;
+      });
+    })
+  }
   
   return (
     <div className="App">
@@ -39,6 +51,7 @@ function App() {
                   id={index}
                   title={note.tile}
                   content={note.content}
+                  onDelete={removeNote}
                   />
               ); 
             }
