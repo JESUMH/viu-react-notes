@@ -3,13 +3,14 @@ import './App.css';
 import Footer from './componentes/Footer';
 import Header from './componentes/Header';
 import NewNoteForm from './componentes/NewNoteForm';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
   
     /**
-   * Hook to save all notes
+   * Custom hook to save all notes in localStorage
    */
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useLocalStorage('notes', []);
   
   /**
    * Save new notes by onAdd event
@@ -19,8 +20,6 @@ function App() {
     setNotes(prevNotes=> {
       return [...prevNotes, newNote]
     })
-
-    console.log(notes);
   }
   
   return (
