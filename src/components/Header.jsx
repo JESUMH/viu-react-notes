@@ -1,6 +1,10 @@
 import { StickyNote2 } from '@mui/icons-material';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 
+/**
+ * @function Header 
+ * @returns header HTML
+ */
 export default function Header() {
   return (
     <header>

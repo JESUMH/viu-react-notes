@@ -1,6 +1,11 @@
 import { Delete } from "@mui/icons-material";
 import { Button, Card, CardActions, CardContent, CardHeader } from "@mui/material";
 
+/**
+ * @function Note
+ * @param {*} props 
+ * @returns note card HTML
+ */
 export default function Note(props) {
 
   function handleClick() {

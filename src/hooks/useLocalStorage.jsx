@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+/**
+ * @function useLocalStorage
+ * @description custom hook to store data in localStorage
+ * @param {*} key 
+ * @param {*} initialValue 
+ * @returns stored value and setValue function
+ */
 export default function useLocalStorage(key, initialValue) {
 
   const [storedValue, setStoredValue] = useState(() => {

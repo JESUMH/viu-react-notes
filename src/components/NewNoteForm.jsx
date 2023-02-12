@@ -2,6 +2,11 @@ import { Add } from "@mui/icons-material";
 import { Box, Card, CardActions, CardContent, Fab, TextField } from "@mui/material";
 import { useState } from "react";
 
+/**
+ * @function NewNoteForm
+ * @param {} props 
+ * @returns new note form HTML
+ */
 export default function NewNoteForm(props) {
 
   /**
@@ -13,7 +18,8 @@ export default function NewNoteForm(props) {
   }) 
 
   /**
-   * Save note on app component state through props 
+   * @function submitNote
+   * @description Save note on app component state through props 
    */
   function submitNote(event) {
     props.onAdd(note)
@@ -24,6 +30,11 @@ export default function NewNoteForm(props) {
     event.preventDefault();
   }
 
+  /**
+   * @function handleChange
+   * @description Detect note changes
+   * @param {*} event 
+   */
   function handleChange(event) {
     const { name, value } = event.target;
 
